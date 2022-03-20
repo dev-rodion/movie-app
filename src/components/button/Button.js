@@ -29,4 +29,5 @@ Button.propTypes = {
   onClick: PropTypes.func,
 };
 
+export { OutlineButton };
 export default Button;

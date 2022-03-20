@@ -26,9 +26,10 @@ button {
   background-color: transparent;
   color: $white;
   box-shadow: unset;
+  padding: 1rem 1.5rem;
   transition: 0.3s ease;
   &:hover {
-    box-sizing: unset;
+    box-shadow: none;
     color: $main-color;
     background-color: $white;
   }
