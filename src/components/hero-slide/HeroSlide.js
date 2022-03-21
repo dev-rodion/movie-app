@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Autoplay } from "swiper";
 // import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 import tmdbApi, { category, movieType } from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
