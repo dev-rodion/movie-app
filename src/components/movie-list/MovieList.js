@@ -4,11 +4,9 @@ import PropTypes from "prop-types";
 import "./movieList.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
-import Button from "../button/Button";
 
 import tmdbApi, { category } from "../../api/tmdbApi";
-import apiConfig from "../../api/apiConfig";
+import MovieCard from "../movie-card/MovieCard";
 
 const MovieList = (props) => {
   const [items, setItems] = useState([]);
@@ -32,14 +30,16 @@ const MovieList = (props) => {
       setItems(response.results);
     };
     getList();
-  }, []);
+    console.log("useEffect");
+  }, [props.id, props.type, props.category]);
 
   return (
     <div className="movie-list">
       <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
         {items.map((item, i) => (
           <SwiperSlide>
-            <img src={apiConfig.w500Image(item.poster_path)} alt={item.title} />
+            <MovieCard item={item} />
+            {/* <img src={apiConfig.w500Image(item.poster_path)} alt={item.title} /> */}
           </SwiperSlide>
         ))}
       </Swiper>
