@@ -38,7 +38,7 @@ const MovieList = (props) => {
       <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
         {items.map((item, i) => (
           <SwiperSlide key={i}>
-            <MovieCard item={item} />
+            <MovieCard category={props.category} item={item} />
             {/* <img src={apiConfig.w500Image(item.poster_path)} alt={item.title} /> */}
           </SwiperSlide>
         ))}
