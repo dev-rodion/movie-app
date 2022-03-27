@@ -4,6 +4,9 @@
 
     Responsive React Movies App With API
 
+# [Demo](https://dev-rodion.github.io/movie-app)
+<br>
+
 # Video tutorial
 
     https://youtu.be/ntYXj9W1Ez8
