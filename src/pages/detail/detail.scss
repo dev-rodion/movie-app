@@ -88,9 +88,40 @@
       background-size: cover;
       margin-bottom: 0.5rem;
     }
-
     &__name {
       font-size: 0.8rem;
+    }
+    @media (max-width: 930px) {
+      &:nth-child(6) {
+        display: none;
+      }
+    }
+    @media (max-width: 787px) {
+      &:nth-child(5) {
+        display: none;
+      }
+    }
+    @media (max-width: 644px) {
+      &:nth-child(5),
+      &:nth-child(6) {
+        display: unset;
+      }
+    }
+    @media (max-width: 600px) {
+      &:nth-child(6) {
+        display: none;
+      }
+    }
+    @media (max-width: 528px) {
+      &:nth-child(5) {
+        display: none;
+      }
+    }
+    @media (max-width: 428px) {
+      &:nth-child(5),
+      &:nth-child(6) {
+        display: unset;
+      }
     }
   }
 }

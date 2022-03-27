@@ -30,7 +30,6 @@ const MovieList = (props) => {
       setItems(response.results);
     };
     getList();
-    console.log("useEffect");
   }, [props.id, props.type, props.category]);
 
   return (
@@ -39,7 +38,6 @@ const MovieList = (props) => {
         {items.map((item, i) => (
           <SwiperSlide key={i}>
             <MovieCard category={props.category} item={item} />
-            {/* <img src={apiConfig.w500Image(item.poster_path)} alt={item.title} /> */}
           </SwiperSlide>
         ))}
       </Swiper>

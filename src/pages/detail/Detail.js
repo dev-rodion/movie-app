@@ -5,6 +5,8 @@ import "./detail.scss";
 
 import tmdbApi from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
+import CastList from "./CastList";
+import VideoList from "./VideoList";
 
 const Detail = () => {
   const { category, id } = useParams();
@@ -58,10 +60,15 @@ const Detail = () => {
                 <div className="section__header">
                   <h2>Casts</h2>
                 </div>
-                {/* casts list */}
+                <CastList id={item.id} />
               </div>
             </div>
           </div>
+            <div className="container">
+              <div className="section mb-3">
+                <VideoList id={item.id} />
+              </div>
+            </div>
         </>
       )}
     </>
