@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { OutlineButton } from "../components/button/Button";
 import HeroSlide from "../components/hero-slide/HeroSlide";
 import MovieList from "../components/movie-list/MovieList";
 
 import { category, movieType, tvType } from "../api/tmdbApi";
+import Loader from "../components/loader/Loader";
 
 const Home = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <>
+      <Loader isLoaded={isLoaded}/>
+
       <HeroSlide />
 
       <div className="container">
@@ -51,7 +65,6 @@ const Home = () => {
           </div>
           <MovieList category={category.tv} type={tvType.top_rated} />
         </div>
-        
       </div>
     </>
   );

@@ -8,8 +8,10 @@ import tmdbApi, { category, movieType, tvType } from "../../api/tmdbApi";
 import Button, { OutlineButton } from "../button/Button";
 import Input from "../input/Input";
 import { useHistory } from "react-router-dom";
+import Loader from "../loader/Loader";
 
 const MovieGrid = (props) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
   const [page, setPage] = useState(1);
@@ -40,6 +42,13 @@ const MovieGrid = (props) => {
       setTotalPage(response.total_pages);
     };
     getList();
+ 
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [props.category, keyword]);
 
   const loadMore = async () => {
@@ -69,6 +78,8 @@ const MovieGrid = (props) => {
 
   return (
     <>
+      <Loader isLoaded={isLoaded} />
+
       <div className="section mb-3">
         <MovieSearch category={props.category} keyword={keyword} />
       </div>
@@ -121,7 +132,9 @@ const MovieSearch = (props) => {
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
       />
-      <Button className="small" onClick={goToSearch}>Search</Button>
+      <Button className="small" onClick={goToSearch}>
+        Search
+      </Button>
     </div>
   );
 };

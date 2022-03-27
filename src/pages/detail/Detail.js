@@ -7,8 +7,11 @@ import tmdbApi from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
 import CastList from "./CastList";
 import VideoList from "./VideoList";
+import Loader from "../../components/loader/Loader";
 
 const Detail = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { category, id } = useParams();
   const [item, setItem] = useState(null);
 
@@ -19,10 +22,19 @@ const Detail = () => {
       window.scrollTo(0, 0);
     };
     getDetail();
+
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [category, id]);
 
   return (
     <>
+      <Loader isLoaded={isLoaded} />
+
       {item && (
         <>
           <div
